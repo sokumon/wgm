@@ -20,9 +20,13 @@ var rootCmd = &cobra.Command{
 }
 
 
-
 func Execute() {
 	rootCmd.AddCommand(versionCmd)
+	rootCmd.AddCommand(initCmd)
+	rootCmd.AddCommand(installCmd)
+	rootCmd.AddCommand(createCliCmd)
+	rootCmd.AddCommand(listcliCmd)
+	rootCmd.AddCommand()
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
