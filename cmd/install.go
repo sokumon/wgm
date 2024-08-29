@@ -16,6 +16,7 @@ var installCmd = &cobra.Command{
 		if utils.CheckOS() == "Ubuntu" || utils.CheckOS() == "Debian" {
 			utils.ExecuteCommand("sudo","apt","update")
 			utils.ExecuteCommand("sudo","apt","install","wireguard","-y")
+			fmt.Print("Installed Wireguard successfully")
 		}
 	},
 }
