@@ -2,9 +2,9 @@ package cmd
 
 import (
 	"fmt"
+	"github.com/spf13/cobra"
 	"os"
 	"wgm/utils"
-	"github.com/spf13/cobra"
 )
 
 var rootCmd = &cobra.Command{
@@ -18,7 +18,6 @@ var rootCmd = &cobra.Command{
 		}
 	},
 }
-
 
 func Execute() {
 	rootCmd.AddCommand(versionCmd)
