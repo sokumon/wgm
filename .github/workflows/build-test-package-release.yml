@@ -26,6 +26,18 @@ jobs:
           mkdir dist
           mv wgm dist/
           echo ${{ github.ref_name }}
+      
+      - name: Test
+        run: |
+          cp dist/wgm /usr/bin/
+          sudo wgm install
+          wg version > /dev/null 2>&1
+          if [[ $? -eq 0 ]]; then
+            echo "wg version check successful"
+          else
+            echo "wg version check failed"
+          fi
+
 
       - name: Increment Version and Create Tag
         id: increment_version
