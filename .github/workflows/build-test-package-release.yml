@@ -29,7 +29,7 @@ jobs:
       
       - name: Test
         run: |
-          cp dist/wgm /usr/bin/
+          sudo cp dist/wgm /usr/bin/
           sudo wgm install
           wg version > /dev/null 2>&1
           if [[ $? -eq 0 ]]; then
