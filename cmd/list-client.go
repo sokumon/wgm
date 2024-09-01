@@ -1,11 +1,9 @@
 package cmd
 
-
 import (
 	"fmt"
 	"github.com/spf13/cobra"
 )
-
 
 var listcliCmd = &cobra.Command{
 	Use:   "list-client",

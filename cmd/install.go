@@ -1,12 +1,10 @@
 package cmd
 
-
 import (
 	"fmt"
 	"github.com/spf13/cobra"
 	"wgm/utils"
 )
-
 
 var installCmd = &cobra.Command{
 	Use:   "install",

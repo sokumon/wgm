@@ -1,0 +1,50 @@
+name: Lint and Commit Go Code
+
+on:
+  push:
+    branches:
+      - '**'  # Trigger on push to any branch
+  pull_request:
+    branches:
+      - '**'  # Trigger on pull requests to any branch
+
+jobs:
+  lint-and-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.20'  # Specify your Go version
+
+      - name: Run GoFmt
+        id: lint
+        run: |
+           gofmt -s -w .
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+            echo "Changes detected"
+            echo "changes=true" >> $GITHUB_ENV
+          else
+            echo "No changes detected"
+            echo "changes=false" >> $GITHUB_ENV
+          fi
+
+      - name: Commit changes
+        if: env.changes == 'true'
+        run: |
+          git add .
+          git commit -m "chore: apply linter fixes"
+          git push

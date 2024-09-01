@@ -3,6 +3,7 @@ package main
 import (
 	"wgm/cmd"
 )
-func main(){
+
+func main() {
 	cmd.Execute()
 }

@@ -1,11 +1,9 @@
 package cmd
 
-
 import (
 	"fmt"
 	"github.com/spf13/cobra"
 )
-
 
 var delcliCmd = &cobra.Command{
 	Use:   "init",
